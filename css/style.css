@@ -1,0 +1,151 @@
+:root {
+    --bg-color: #303030;
+    --home-color: #4ab1f3;
+    --clock-color: #f4d81f;
+    --guest-color: #ff9a5a;
+    --text-color: #ffffff;
+    --main-font-family: "Orbitron", sans-serif;
+    --shadow-glow-blue: 1px 1px 8px #92d0f8, 1px 1px 4px #000000;
+    --shadow-glow-orange: 1px 1px 8px #ffcdad, 1px 1px 4px #000000;
+}
+
+.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #303030;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--main-font-family);
+    padding: 10px 30px;
+}
+
+.change-switcher {
+    color: var(--text-color);
+    font-size: 1.5em;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+
+.sec-one,
+.sec-three {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 30px 0 20px 0;
+}
+
+.home,
+.guest {
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title,
+.guest-title {
+    font-family: var(--main-font-family);
+    color: var(--text-color);
+    font-size: .8em;
+}
+
+.home-score {
+    font-family: 'digital-7';
+    color: var(--home-color);
+    text-shadow: var(--shadow-glow-blue);
+    font-weight: normal;
+    font-size: 4em;
+}
+
+.guest-score {
+    font-family: 'digital-7';
+    color: var(--guest-color);
+    text-shadow: var(--shadow-glow-orange);
+    font-weight: normal;
+    font-size: 4em;
+}
+
+
+.timer {
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid var(--text-color);
+    border-radius: 100%;
+    color: var(--text-color);
+    outline: 10px solid #dedede;
+    padding:5% 5%;
+    outline-offset: 6px;
+}
+
+.timer p{
+    font-size: .6em;
+    color: rgb(215, 215, 215);
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.timer h5{
+    color: var(--clock-color);
+    font-weight: 100;
+    font-size: 1.6em;
+    font-family: 'digital-7';
+}
+
+.clock {
+    font-family: 'digital-7';
+    color: var(--clock-color);
+    text-shadow: var(--shadow-glow);
+    font-size: 3em;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+
+.sec-three {
+    padding: 50px 0;
+}
+
+
+.sec-three button {
+    border: none;
+    padding: 8px 16px;
+    font-family: var(--main-font-family);
+    font-size: 1.5em;
+    border-radius: 6px;
+    margin-right: 5px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.sec-three button:active {
+    transform: scale(0.90);
+}
+
+.home-score-btns button {
+    box-shadow: 0px 0px 4px 2px rgba(74, 178, 243, 0.9);
+}
+
+.pause-start button {
+    box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, 0.9);
+}
+
+.guest-score-btns button {
+    box-shadow: 0px 0px 4px 2px rgba(255, 153, 90, 0.9);
+}
