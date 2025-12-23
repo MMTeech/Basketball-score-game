@@ -17,7 +17,6 @@ function themeToggle() {
 }
 changeSwitcher.addEventListener("click", themeToggle);
 
-
 // get the dom elements for score buttons
 let homeScore = document.querySelector(".home-score");
 let guestScore = document.querySelector(".guest-score");
@@ -41,25 +40,46 @@ function setupScoreHandler(buttonContainer, scoreElement) {
 setupScoreHandler(homeScoreBtns, homeScore);
 setupScoreHandler(guestScoreBtns, guestScore);
 
+/**
+ *   timer logic
+ */
 
-
-
-// get dom elements for timer
-let clockDsiplay = document.querySelector('.clock'); // Display the clock
-let period = document.querySelector('.period'); // period Indicator
+let totalSeconds = 5;
+// We defined this timer ID to be able to stop the interval
+let timerId = null;
+let periodCounterValue = 0;
+let periodCounterEl = document.querySelector(".period-counter");
+let clockDsiplay = document.querySelector(".clock");
+let pauseStartBtn = document.querySelector(".pause-start-btn");
 let resetBtn = document.querySelector('.reset-btn');
-let periodCounter = document.querySelector('.period-counter');
 
-let totalSeconds = 12 * 60;
-let timerId = null
-let timerState = false;
+pauseStartBtn.addEventListener("click", () => {
+  if (timerId === null) {
+    pauseStartBtn.innerHTML = `<i class="fa-solid fa-circle-pause"></i>`;
 
-function updateDisplay(){
-    let minute = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-    let second = Math.floor(totalSeconds % 60).toString().padStart(2, '0');
+    timerId = setInterval(() => {
+      totalSeconds--;
 
-    clockDsiplay.textContent = `${minute}:${second}`;
-}
+      let min = Math.floor(totalSeconds / 60);
+      let sec = totalSeconds % 60;
 
+      sec = sec.toString().padStart(2, "0");
 
+      clockDsiplay.innerText = `${min}:${sec}`;
 
+      if (totalSeconds === 0) {
+        clearInterval(timerId);
+        timerId = null;
+        periodCounterValue++;
+        periodCounterEl.innerText = periodCounterValue;
+        totalSeconds = 5;
+        pauseStartBtn.innerHTML = `<i class="fa-solid fa-circle-play"></i>`;
+      }
+    }, 1000);
+  } else {
+    // pause
+    clearInterval(timerId);
+    timerId = null;
+    pauseStartBtn.innerHTML = `<i class="fa-solid fa-circle-play"></i>`;
+  }
+});
