@@ -51,7 +51,7 @@ let periodCounterValue = 0;
 let periodCounterEl = document.querySelector(".period-counter");
 let clockDsiplay = document.querySelector(".clock");
 let pauseStartBtn = document.querySelector(".pause-start-btn");
-let resetBtn = document.querySelector('.reset-btn');
+let resetBtn = document.querySelector(".reset-btn");
 
 pauseStartBtn.addEventListener("click", () => {
   if (timerId === null) {
@@ -82,4 +82,11 @@ pauseStartBtn.addEventListener("click", () => {
     timerId = null;
     pauseStartBtn.innerHTML = `<i class="fa-solid fa-circle-play"></i>`;
   }
+});
+
+resetBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+  timerId = null;
+  pauseStartBtn.innerHTML = `<i class="fa-solid fa-circle-play"></i>`;
+  window.location.reload();
 });
